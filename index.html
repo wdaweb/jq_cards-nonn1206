@@ -469,9 +469,13 @@
             <div>
                 <img src="./images/ruru.png" alt="">
                 <span>Rule</span>
-                <p>● 共三關，配對同樣的貓咪圖案後可進到下一關</p>
+                <p>● 一共三關，配對同樣的貓咪圖案後可進到下一關</p>
                 <br>
                 <p>● 每個關卡有限定時間，時間到時自動淘汰</p>
+                <br>
+                <p>● 一進去馬上按HELP鍵牌面會持續數秒變成半透明，
+                    　若一開始沒有按過一下HELP鍵就會自動消失</p>
+
                 <br>
                 <p>● 準備好的話就點選START鍵開始貓咪配對遊戲喵~</p>
             </div>
@@ -557,6 +561,8 @@
 
 
 
+
+
         // 最多只能翻兩張牌
         $('#game0').on('click', '.card', function () {
             if ($('.card-open').length < 2 && !$(this).hasClass('card-open')) {
@@ -574,14 +580,24 @@
                 }
                 // 不管一不一樣都翻回來
                 setTimeout(() => {
+
                     $('.card-open').removeClass('card-open')
                 }, 1000);
             }
+            setTimeout(() => {
+
+                $('.hint0').hide()
+                $('.card-back').removeClass('card-hint')
+            }, 2000);
+
+
+
+
             // 如果全部翻完的話
             if (countdown0 > 0 && $('.card-clear').length === 8) {
                 clearInterval(timer)
                 $('#btn-start0').show()
-                $('.hint0').hide()
+                // $('.hint0').hide()
                 Swal.fire({
                     title: 'Congratulations!You can go to the next'
                 })
@@ -655,9 +671,16 @@
                 }
                 // 不管一不一樣都翻回來
                 setTimeout(() => {
+
                     $('.card1-open').removeClass('card1-open')
                 }, 1000);
             }
+            setTimeout(() => {
+
+                $('.hint1').hide()
+                $('.card1-back').removeClass('card-hint')
+            }, 3000);
+
             // 如果全部翻完的話
             if (countdown1 > 0 && $('.card1-clear').length === 12) {
                 clearInterval(timer)
@@ -737,6 +760,13 @@
                     $('.card2-open').removeClass('card2-open')
                 }, 1000);
             }
+            setTimeout(() => {
+
+                $('.hint2').hide()
+                $('.card2-back').removeClass('card-hint')
+            }, 6000);
+
+
             // 如果全部翻完的話
             if (countdown2 > 0 && $('.card2-clear').length === 20) {
                 clearInterval(timer)

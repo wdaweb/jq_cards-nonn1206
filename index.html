@@ -457,6 +457,7 @@
 </head>
 
 <body>
+    <audio src="./music/meow.mp3" volume="1.0" id="audio"></audio>
     <div id="left">
 
         <p>Cat Matching Game</p>
@@ -502,7 +503,7 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js"></script>
     <script>
-
+        const audio = document.getElementById('audio')
         $('#game0,#game1,#game2').hide()
 
 
@@ -559,17 +560,12 @@
         })
 
 
-
-
-
-
         // 最多只能翻兩張牌
         $('#game0').on('click', '.card', function () {
             if ($('.card-open').length < 2 && !$(this).hasClass('card-open')) {
                 $(this).addClass('card-open')
+                audio.play()
             }
-
-
             // 要同時判斷故不用else if
             // 如果翻開兩張牌
             if ($('.card-open').length === 2) {
@@ -660,6 +656,7 @@
         $('#game1').on('click', '.card1', function () {
             if ($('.card1-open').length < 2 && !$(this).hasClass('card1-open')) {
                 $(this).addClass('card1-open')
+                audio.play()
             }
             // 要同時判斷故不用else if
             // 如果翻開兩張牌
@@ -746,6 +743,7 @@
         $('#game2').on('click', '.card2', function () {
             if ($('.card2-open').length < 2 && !$(this).hasClass('card2-open')) {
                 $(this).addClass('card2-open')
+                audio.play()
             }
             // 要同時判斷故不用else if
             // 如果翻開兩張牌

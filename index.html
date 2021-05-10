@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Yellowtail&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Freckle+Face&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/earlyaccess/cwtexyen.css" rel="stylesheet">
+    <title>Document</title>
+    <style>
+        html,
+        body {
+            width: 100%px;
+            height: 950px;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: url(./images/nikukyu.png) 50 50, auto;
+            font-family: 'Freckle Face', cursive;
+
+        }
+
+        #left {
+            width: 900px;
+            height: 950px;
+            float: left;
+            background-image: url(./images/01.png);
+            overflow-y: hidden;
+            position: relative;
+            font-size: 50px;
+            color: rgb(90, 86, 87);
+            text-align: center;
+            line-height: 980px;
+
+
+        }
+
+        #left img {
+            width: 600px;
+            height: auto;
+            position: absolute;
+            left: 15%;
+            top: 10%;
+
+        }
+
+
+        #right {
+            width: 1000px;
+            height: 950px;
+            float: right;
+            background-color: rgb(226, 226, 226);
+        }
+
+
+
+        #game {
+            width: 95%;
+            height: 900px;
+            text-align: center;
+            margin: 15px;
+            padding: 10px;
+            background-color: rgb(179, 167, 159);
+            border: double 8px rgba(131, 18, 70, 0.5);
+            border-radius: 10%;
+
+        }
+
+        #game img {
+            position: relative;
+        }
+
+        #game span {
+            font-size: 100px;
+            color: rgba(255, 255, 255);
+            position: absolute;
+            top: 8%;
+            left: 70%;
+        }
+
+        #game p {
+            font-size: 40px;
+            text-align: left;
+            font-weight: bolder;
+            color: whitesmoke;
+            font-family: ‘cwTeXYen’, sans-serif;
+        }
+
+        #game p:hover {
+
+
+            color: whitesmoke;
+            background-color: rgb(129, 65, 54);
+        }
+
+        #btn-start {
+            text-align: center;
+            font-size: 30px;
+            width: 150px;
+            height: 80px;
+            background: whitesmoke;
+            line-height: 80px;
+            padding: 0;
+            position: absolute;
+            top: 65%;
+            left: 40%;
+            font-family: 'Freckle Face', cursive;
+            border-radius: 20px;
+            box-shadow: 10px 20px 15px rgba(65, 60, 61, 0.6);
+        }
+
+        #btn-start:hover {
+            cursor: pointer;
+            background: rgb(177, 128, 136);
+            color: whitesmoke;
+            font-size: 25px;
+            border-style: none;
+        }
+
+        /* 第一區 *********************************************************************************/
+        #game0 {
+            width: 80%;
+            height: 500px;
+            /* background: antiquewhite; */
+
+            text-align: center;
+            margin: 100px;
+            position: relative;
+
+        }
+
+        #game0 p {
+            font-size: 50px;
+            position: absolute;
+            top: 90%;
+            left: 25%;
+        }
+
+        #game0 span {
+            font-size: 50px;
+            color: brown;
+        }
+
+        .card {
+
+            width: 180px;
+            height: 180px;
+            position: relative;
+
+            /* 設定子元素在3D空間內 */
+            transform-style: preserve-3d;
+            transition: transform .5s;
+            display: inline-block;
+
+            margin: 5px;
+            /* padding: 25px; */
+
+        }
+
+        .card-back {
+            width: 100%;
+            height: 100%;
+
+            background-image: url(./images/neko-back0.png);
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: contain;
+            position: absolute;
+
+            /* ios專用 翻過來後隱藏背面 */
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+
+
+        }
+
+        .card-hint {
+            opacity: 0.5;
+            filter: alpha(opacity=50);
+        }
+
+        .card-front {
+            width: 100%;
+            height: 100%;
+            /* 花色要隨機產生 可拿可不拿 */
+            /* background-image: url(./images/1E.png); */
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: contain;
+            position: absolute;
+            transform: rotateY(180deg);
+        }
+
+        .card-open {
+            transform: rotateY(180deg);
+        }
+
+        #btn-start0 {
+            text-align: center;
+            font-size: 30px;
+            width: 150px;
+            height: 80px;
+            background: whitesmoke;
+            line-height: 80px;
+            padding: 0;
+            position: absolute;
+            top: 120%;
+            left: 45%;
+            font-family: 'Freckle Face', cursive;
+            border-radius: 20px;
+            box-shadow: 10px 20px 15px rgba(65, 60, 61, 0.6);
+
+        }
+
+        #btn-start0:hover {
+            cursor: pointer;
+            background: rgb(177, 128, 136);
+            color: whitesmoke;
+            font-size: 25px;
+            border-style: none;
+        }
+
+        .hint0 {
+            text-align: center;
+            font-size: 30px;
+            width: 150px;
+            height: 80px;
+            background: whitesmoke;
+            line-height: 80px;
+            padding: 0;
+            position: absolute;
+            top: 120%;
+            left: 45%;
+            font-family: 'Freckle Face', cursive;
+            border-radius: 20px;
+            box-shadow: 10px 20px 15px rgba(65, 60, 61, 0.6);
+        }
+
+        .hint0:hover {
+            cursor: pointer;
+            background: rgb(177, 128, 136);
+            color: whitesmoke;
+            font-size: 25px;
+            border-style: none;
+        }
+
+        /* 第二區*************************************************************************** */
+        #game1 {
+            width: 800px;
+            height: 550px;
+            margin: 100px;
+            text-align: center;
+            /* background-color: rgb(236, 203, 208); */
+            position: relative;
+        }
+
+        #game1 p {
+            font-size: 50px;
+            position: absolute;
+            top: 90%;
+            left: 25%;
+        }
+
+        #game1 span {
+            font-size: 50px;
+            color: brown;
+        }
+
+        .card1 {
+            width: 140px;
+            height: 120px;
+            position: relative;
+            /* 設定子元素在3D空間內 */
+            transform-style: preserve-3d;
+            transition: transform .5s;
+            display: inline-block;
+            margin: 5px;
+            padding: 10px;
+
+        }
+
+        .card1-back {
+            width: 100%;
+            height: 100%;
+            background-image: url(./images/neko-back.png);
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: contain;
+            position: absolute;
+            /* ios專用 翻過來後隱藏背面 */
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+
+        }
+
+        .card1-front {
+            width: 100%;
+            height: 100%;
+            /* 花色要隨機產生 可拿可不拿 */
+            /* background-image: url(./images/1N.png); */
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: contain;
+            position: absolute;
+            transform: rotateY(180deg);
+        }
+
+        .card1-open {
+            transform: rotateY(180deg);
+        }
+
+        #btn-start1 {
+            text-align: center;
+            font-size: 30px;
+            width: 150px;
+            height: 80px;
+            background: whitesmoke;
+            line-height: 80px;
+            padding: 0;
+            position: absolute;
+            top: 120%;
+            left: 45%;
+            font-family: 'Freckle Face', cursive;
+            border-radius: 20px;
+            box-shadow: 10px 20px 15px rgba(65, 60, 61, 0.6);
+
+        }
+
+        #btn-start1:hover {
+            cursor: pointer;
+            background: rgb(177, 128, 136);
+            color: whitesmoke;
+            font-size: 25px;
+            border-style: none;
+        }
+
+
+
+        .hint1 {
+            text-align: center;
+            font-size: 30px;
+            width: 150px;
+            height: 80px;
+            background: whitesmoke;
+            line-height: 80px;
+            padding: 0;
+            position: absolute;
+            top: 120%;
+            left: 45%;
+            font-family: 'Freckle Face', cursive;
+            border-radius: 20px;
+            box-shadow: 10px 20px 15px rgba(65, 60, 61, 0.6);
+        }
+
+        .hint1:hover {
+            cursor: pointer;
+            background: rgb(177, 128, 136);
+            color: whitesmoke;
+            font-size: 25px;
+            border-style: none;
+        }
+
+        /* 第三區*************************************************************************** */
+        #game2 {
+            width: 800px;
+            height: 600px;
+            /* background-color: turquoise; */
+            margin: 50px 100px;
+            text-align: center;
+            position: relative;
+        }
+
+        #game2 p {
+            font-size: 50px;
+            position: absolute;
+            top: 95%;
+            left: 25%;
+        }
+
+        #game2 span {
+            font-size: 50px;
+            color: brown;
+        }
+
+        .card2 {
+            width: 120px;
+            height: 120px;
+            position: relative;
+            /* 設定子元素在3D空間內 */
+            transform-style: preserve-3d;
+            transition: transform .5s;
+            float: left;
+            margin: 10px;
+            padding: 5px;
+
+        }
+
+        .card2-back {
+            width: 100%;
+            height: 100%;
+            background-image: url(./images/neko-back2.png);
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: contain;
+            position: absolute;
+            /* ios專用 翻過來後隱藏背面 */
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+        }
+
+        .card2-front {
+            width: 100%;
+            height: 100%;
+            /* 花色要隨機產生 可拿可不拿 */
+            /* background-image: url(./images/1.png); */
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: contain;
+            position: absolute;
+            transform: rotateY(180deg);
+        }
+
+        .card2-open {
+            transform: rotateY(180deg);
+        }
+
+        .hint2 {
+            text-align: center;
+            font-size: 30px;
+            width: 150px;
+            height: 80px;
+            background: whitesmoke;
+            line-height: 80px;
+            padding: 0;
+            position: absolute;
+            top: 120%;
+            left: 45%;
+            font-family: 'Freckle Face', cursive;
+            border-radius: 20px;
+            box-shadow: 10px 20px 15px rgba(65, 60, 61, 0.6);
+        }
+
+        .hint2:hover {
+            cursor: pointer;
+            background: rgb(177, 128, 136);
+            color: whitesmoke;
+            font-size: 25px;
+            border-style: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="left">
+
+        <p>Cat Matching Game</p>
+        <img src="./images/LGEn.gif" alt="">
+        <input type="button" value="START" id="btn-start">
+
+    </div>
+    <div id="right">
+        <div id="game">
+            <div>
+                <img src="./images/ruru.png" alt="">
+                <span>Rule</span>
+                <p>● 共三關，配對同樣的貓咪圖案後可進到下一關</p>
+                <br>
+                <p>● 每個關卡有限定時間，時間到時自動淘汰</p>
+                <br>
+                <p>● 準備好的話就點選START鍵開始貓咪配對遊戲喵~</p>
+            </div>
+
+        </div>
+        <div id="game0">
+            <input type="button" value="NEXT" id="btn-start0">
+            <input type="button" value="HELP" class="hint0">
+            <p>You have <span id="text-time0">20</span> seconds left</p>
+        </div>
+        <div id="game1">
+            <input type="button" value="NEXT" id="btn-start1">
+            <input type="button" value="HELP" class="hint1">
+            <p>You have <span id="text-time1">40</span> seconds left</p>
+        </div>
+        <div id="game2">
+            <input type="button" value="HELP" class="hint2">
+            <p>You have <span id="text-time2">60</span> seconds left</p>
+        </div>
+    </div>
+
+
+    <script src="./jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js"></script>
+    <script>
+
+        $('#game0,#game1,#game2').hide()
+
+
+        $('#btn-start').click(function () {
+            $('#game,#btn-start,#btn-start0,#btn-start1').hide()
+            $('#game0').show()
+        })
+
+        // 第一區********************************************************************************
+        let timer = 0
+
+        let countdown0 = 20
+
+        let countdown1 = 40
+
+        let countdown2 = 60
+
+
+
+        for (let i = 0; i < 8; i++) {
+            $('#game0').append(`
+        <div class="card">
+          <div class="card-back"></div>
+          <div class="card-front"></div>
+        </div>
+      `)
+        }
+        // 決定花色並打散
+        for (let i = 0; i < 8; i++) {
+            // 算出八張牌的餘數 決定數字
+            let number = i % (8 / 2) + 1
+            $('.card').eq(i).find('.card-front').css('background-image', `url(./images/${number}E.png)`)
+            // 建立屬性名稱 放需要的資料(方便測試)
+            $('.card').eq(i).attr('data-card', number)
+            // 0~15隨機打散 
+            let target = Math.floor(Math.random() * 8)
+            $('.card').eq(target).insertAfter($('.card').eq(i))
+        }
+
+
+        $('#btn-start').click(function () {
+            timer = setInterval(() => {
+
+                countdown0--
+                $('#text-time0').text(countdown0);
+            }, 1000)
+
+
+        })
+
+        $('.hint0').click(function () {
+            $('.card-back').addClass('card-hint')
+
+        })
+
+
+
+
+        // 最多只能翻兩張牌
+        $('#game0').on('click', '.card', function () {
+            if ($('.card-open').length < 2 && !$(this).hasClass('card-open')) {
+                $(this).addClass('card-open')
+            }
+
+
+            // 要同時判斷故不用else if
+            // 如果翻開兩張牌
+            if ($('.card-open').length === 2) {
+                // 如果兩張數字一樣
+                if ($('.card-open').eq(0).attr('data-card') === $('.card-open').eq(1).attr('data-card')) {
+                    // 淡出  fadeout會影響排版 所以用fadeTo 並使用card-clear表示已解決
+                    $('.card-open').fadeTo(1000, 0).addClass('card-clear')
+                }
+                // 不管一不一樣都翻回來
+                setTimeout(() => {
+                    $('.card-open').removeClass('card-open')
+                }, 1000);
+            }
+            // 如果全部翻完的話
+            if (countdown0 > 0 && $('.card-clear').length === 8) {
+                clearInterval(timer)
+                $('#btn-start0').show()
+                $('.hint0').hide()
+                Swal.fire({
+                    title: 'Congratulations!You can go to the next'
+                })
+            } else if (countdown0 <= 0) {
+                clearInterval(timer)
+                Swal.fire({
+                    title: 'Times up'
+                })
+            }
+        })
+
+
+        $('#btn-start0').click(function () {
+
+            $('#game1').show()
+            $('#game0').hide()
+            $('#btn-start0').hide()
+        })
+        $('.hint').click(function () {
+            $('.card1-back').addClass('card-hint')
+
+        })
+        /* 第二區*************************************************************************** */
+
+        $('#btn-start0').click(function () {
+            timer = setInterval(() => {
+
+                countdown1--
+                $('#text-time1').text(countdown1);
+            }, 1000)
+
+
+        })
+        $('.hint1').click(function () {
+            $('.card1-back').addClass('card-hint')
+
+        })
+
+        for (let i = 0; i < 12; i++) {
+            $('#game1').append(`
+        <div class="card1">
+          <div class="card1-back"></div>
+          <div class="card1-front"></div>
+        </div>
+      `)
+        }
+        // 決定花色並打散
+        for (let i = 0; i < 12; i++) {
+            // 算出八張牌的餘數 決定數字
+            let number = i % (12 / 2) + 1
+            $('.card1').eq(i).find('.card1-front').css('background-image', `url(./images/${number}N.png)`)
+            // 建立屬性名稱 放需要的資料(方便測試)
+            $('.card1').eq(i).attr('data-card1', number)
+            // 0~15隨機打散 
+            let target = Math.floor(Math.random() * 12)
+            $('.card1').eq(target).insertAfter($('.card1').eq(i))
+        }
+
+        // 最多只能翻兩張牌
+        $('#game1').on('click', '.card1', function () {
+            if ($('.card1-open').length < 2 && !$(this).hasClass('card1-open')) {
+                $(this).addClass('card1-open')
+            }
+            // 要同時判斷故不用else if
+            // 如果翻開兩張牌
+            if ($('.card1-open').length === 2) {
+                // 如果兩張數字一樣
+                if ($('.card1-open').eq(0).attr('data-card1') === $('.card1-open').eq(1).attr('data-card1')) {
+                    // 淡出  fadeout會影響排版 所以用fadeTo 並使用card11-clear表示已解決
+                    $('.card1-open').fadeTo(1000, 0).addClass('card1-clear')
+                }
+                // 不管一不一樣都翻回來
+                setTimeout(() => {
+                    $('.card1-open').removeClass('card1-open')
+                }, 1000);
+            }
+            // 如果全部翻完的話
+            if (countdown1 > 0 && $('.card1-clear').length === 12) {
+                clearInterval(timer)
+                $('#btn-start1').show()
+                $('.hint1').hide()
+                Swal.fire({
+                    title: 'Congratulations!You can go to the next'
+                })
+
+            } else if (countdown1 <= 0) {
+                clearInterval(timer)
+                Swal.fire({
+                    title: 'Times up'
+                })
+            }
+
+        })
+
+        $('#btn-start1').click(function () {
+
+            $('#game2').show()
+            $('#game0').hide()
+            $('#game1').hide()
+            $('#btn-start1').hide()
+        })
+        /* 第三區*************************************************************************** */
+
+        $('#btn-start1').click(function () {
+            timer = setInterval(() => {
+                countdown2--
+                $('#text-time2').text(countdown2);
+            }, 1000);
+
+
+        })
+
+        $('.hint2').click(function () {
+            $('.card2-back').addClass('card-hint')
+
+        })
+        for (let i = 0; i < 20; i++) {
+            $('#game2').append(`
+        <div class="card2">
+          <div class="card2-back"></div>
+          <div class="card2-front"></div>
+        </div>
+      `)
+        }
+        // 決定花色並打散
+        for (let i = 0; i < 20; i++) {
+            // 算出八張牌的餘數 決定數字
+            let number = i % (20 / 2) + 1
+            $('.card2').eq(i).find('.card2-front').css('background-image', `url(./images/${number}.png)`)
+            // 建立屬性名稱 放需要的資料(方便測試)
+            $('.card2').eq(i).attr('data-card2', number)
+            // 0~15隨機打散 
+            let target = Math.floor(Math.random() * 12)
+            $('.card2').eq(target).insertAfter($('.card2').eq(i))
+        }
+
+
+        // 最多只能翻兩張牌
+        $('#game2').on('click', '.card2', function () {
+            if ($('.card2-open').length < 2 && !$(this).hasClass('card2-open')) {
+                $(this).addClass('card2-open')
+            }
+            // 要同時判斷故不用else if
+            // 如果翻開兩張牌
+            if ($('.card2-open').length === 2) {
+                // 如果兩張數字一樣
+                if ($('.card2-open').eq(0).attr('data-card2') === $('.card2-open').eq(1).attr('data-card2')) {
+                    // 淡出  fadeout會影響排版 所以用fadeTo 並使用card-clear表示已解決
+                    $('.card2-open').fadeTo(1000, 0).addClass('card2-clear')
+                }
+                // 不管一不一樣都翻回來
+                setTimeout(() => {
+                    $('.card2-open').removeClass('card2-open')
+                }, 1000);
+            }
+            // 如果全部翻完的話
+            if (countdown2 > 0 && $('.card2-clear').length === 20) {
+                clearInterval(timer)
+                const cat = $(`<img src="./images/source.gif" alt="" style="position:fixed;top:25%;left:63%"  >`)
+                const con = confetti({
+                    particleCount: 100,
+                    spread: 70,
+                    origin: { y: 0.6 }
+                });
+
+                $('#game2').append(cat).append(con)
+                $('.hint2').hide()
+                Swal.fire({
+                    title: 'Congratulations!'
+                })
+            } else if (countdown2 <= 0) {
+                clearInterval(timer)
+                Swal.fire({
+                    title: 'Times up'
+                })
+            }
+
+        })
+
+    </script>
+</body>
+
+</html>
